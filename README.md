@@ -112,38 +112,38 @@ This project solves all of the above by implementing:
 
 ```text
 ECG Signal Input (MIT-BIH Arrhythmia Database)
-|
-v
+│
+▼
 [Stage 1 - Signal Preprocessing]
-|-- Baseline Wander Removal
-|-- High-Frequency Noise Filtering
-+-- Motion Artifact Suppression
-|
-v
+├── Baseline Wander Removal
+├── High-Frequency Noise Filtering
+└── Motion Artifact Suppression
+│
+▼
 [Stage 2 - QRS Complex Detection]
-|-- Bandpass Filtering
-|-- Differentiation
-|-- Squaring
-|-- Moving Window Integration
-+-- Adaptive Thresholding (Pan-Tompkins)
-|
-v
+├── Bandpass Filtering
+├── Differentiation
+├── Squaring
+├── Moving Window Integration
+└── Adaptive Thresholding (Pan-Tompkins)
+│
+▼
 [Stage 3 - Feature Extraction]
-|-- R-Peak Detection
-|-- RR Interval Calculation
-|-- QRS Width and Amplitude
-+-- Morphology Features
-|
-v
+├── R-Peak Detection
+├── RR Interval Calculation
+├── QRS Width and Amplitude
+└── Morphology Features
+│
+▼
 [Stage 4 - Deep Neural Network Classifier]
-|-- Approximate Multipliers (low power)
-|-- Approximate Adders (low area)
-|-- Activation Functions (hardware optimized)
-+-- 7-Class Output Layer
-|
-v
+├── Approximate Multipliers (low power)
+├── Approximate Adders (low area)
+├── Activation Functions (hardware optimized)
+└── 7-Class Output Layer
+│
+▼
 [Classification Output]
-+-- Normal / APC / PVC / VT / AF / PB / EB
+└── Normal / APC / PVC / VT / AF / PB / EB
 ```
 
 ---
@@ -177,56 +177,41 @@ contain noise and natural variability.
 
 ## Implementation Flow
 
-Step 1 --> Study MIT-BIH Arrhythmia Database
-Step 2 --> ECG preprocessing algorithm design (MATLAB/Python)
-Step 3 --> RTL design in Verilog HDL
-Step 4 --> Functional simulation (Cadence Xcelium)
-Step 5 --> Logic synthesis — gate-level netlist (Cadence Genus)
-Step 6 --> Floorplanning — chip area and power ring definition
-Step 7 --> Standard cell placement (Cadence Innovus)
-Step 8 --> Clock Tree Synthesis (CTS) — clock distribution
-Step 9 --> Routing — metal interconnects
-Step 10 --> Physical verification — DRC and LVS (Cadence Virtuoso)
-Step 11 --> GDSII layout file generation
-
+```text
+Step 1 ──► Study MIT-BIH Arrhythmia Database
+Step 2 ──► ECG preprocessing algorithm design (MATLAB/Python)
+Step 3 ──► RTL design in Verilog HDL
+Step 4 ──► Functional simulation (Cadence Xcelium)
+Step 5 ──► Logic synthesis — gate-level netlist (Cadence Genus)
+Step 6 ──► Floorplanning — chip area and power ring definition
+Step 7 ──► Standard cell placement (Cadence Innovus)
+Step 8 ──► Clock Tree Synthesis (CTS) — clock distribution
+Step 9 ──► Routing — metal interconnects
+Step 10 ──► Physical verification — DRC and LVS (Cadence Virtuoso)
+Step 11 ──► GDSII layout file generation
+```
 ---
 
 ## Repository Structure
 
 ```text
-|-- rtl/
-
-| |-- preprocessing.v
-
-| |-- qrs_detector.v
-
-| |-- feature_extractor.v
-
-| |-- approx_multiplier.v
-
-| |-- approx_adder.v
-
-| +-- classifier.v
-
-|-- sim/
-
-| +-- testbench.v
-
-|-- synthesis/
-
-| +-- netlist.v
-
-|-- diagrams/
-
-| |-- architecture_flowchart.png
-
-| +-- block_diagram.png
-
-|-- docs/
-
-| +-- synopsis.pdf
-
-+-- README.md
+├── rtl/
+│ ├── preprocessing.v
+│ ├── qrs_detector.v
+│ ├── feature_extractor.v
+│ ├── approx_multiplier.v
+│ ├── approx_adder.v
+│ └── classifier.v
+├── sim/
+│ └── testbench.v
+├── synthesis/
+│ └── netlist.v
+├── diagrams/
+│ ├── architecture_flowchart.png
+│ └── block_diagram.png
+├── docs/
+│ └── synopsis.pdf
+└── README.md
 ```
 
 ---
